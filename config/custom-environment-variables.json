@@ -1,5 +1,9 @@
 {
   "db": "DB_CONN",
   "processChunkSize": "APP_NPROCESS_CHUNK",
-  "defaultCronTime": "APP_CRONTIME"
+  "defaultCronTime": "APP_CRONTIME",
+  "queue": {
+    "connection": "QUEUE_CONN",
+    "projectScrapperQueueName": "QUEUE_PROJECT_SCRAPPER"
+  }
 }

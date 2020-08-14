@@ -1,6 +1,7 @@
 import debug from 'debug';
 import config from 'config';
 import projectJobsRepo from './repository/project-jobs';
+import sendScrapeProjectJob from "./helpers/send-scrape-project-job";
 
 const log = debug('rimuru:app');
 
@@ -22,7 +23,14 @@ export class App {
                 task.push(projectJobsRepo.setJobToInactive(activeJob));
             } else {
                 // send job to worker
-                log("send job %s to worker", activeJob._id.toString());
+                const _id = activeJob._id.toString();
+                log("send job %s to worker", _id);
+                sendScrapeProjectJob({
+                    _id,
+                    malId: activeJob.malId,
+                    provider: activeJob.provider,
+                    searchParam: activeJob.searchParam
+                })
             }
         }
         await Promise.all(task);

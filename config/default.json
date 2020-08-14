@@ -3,5 +3,9 @@
   "processChunkSize": 4,
   "defaultCronTime": "0 0 12 * * *",
   "projectNeverThreshold": 4,
-  "projectInactiveThreshold": 12
+  "projectInactiveThreshold": 12,
+  "queue": {
+    "connection": "amqp://localhost",
+    "projectScrapperQueueName": "project-scrap"
+  }
 }
