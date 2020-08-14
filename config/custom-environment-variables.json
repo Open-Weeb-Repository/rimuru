@@ -1,0 +1,5 @@
+{
+  "db": "DB_CONN",
+  "processChunkSize": "APP_NPROCESS_CHUNK",
+  "defaultCronTime": "APP_CRONTIME"
+}
