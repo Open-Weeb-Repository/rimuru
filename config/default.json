@@ -1,5 +1,7 @@
 {
   "db": "localhost/open-weeb-repo",
   "processChunkSize": 4,
-  "defaultCronTime": "0 0 12 * * *"
+  "defaultCronTime": "0 0 12 * * *",
+  "projectNeverThreshold": 4,
+  "projectInactiveThreshold": 12
 }
