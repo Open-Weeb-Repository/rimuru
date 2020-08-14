@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "node rimuru",
     "start:once": "node rimuru once",
-    "tools:dummy-scrape-worker": "ts-node src/tools/dummy-consumer-scrape-project.ts"
+    "tools:dummy-scrape-worker": "ts-node tools/dummy-consumer-scrape-project.ts"
   },
   "keywords": [],
   "author": "",

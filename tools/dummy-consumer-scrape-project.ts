@@ -1,5 +1,5 @@
-import { scrapJobQueue } from '../commons/amqp';
-import {RimuruMessage} from "rimuru.messages";
+import { scrapJobQueue } from '../src/commons/amqp';
+import { RimuruMessage } from "../src/types/rimuru.messages";
 
 scrapJobQueue.prefetch(1);
 
