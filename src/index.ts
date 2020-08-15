@@ -50,7 +50,6 @@ function once() {
                 log('closing DB');
                 db.close();
             }
-            closeAmqp();
             return;
         });
 }
