@@ -3,7 +3,6 @@ import {CronJob} from "cron";
 import debug from 'debug';
 import config from "config";
 import db from "./commons/db";
-import { closeConnection as closeAmqp } from "./commons/amqp";
 import {IStartArgs} from "app.args";
 import {App} from "./app";
 
