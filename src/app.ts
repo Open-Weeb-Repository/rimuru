@@ -33,6 +33,8 @@ export class App {
                 })
             }
         }
-        await Promise.all(task);
+        if (task.length > 0) {
+            await Promise.all(task);
+        }
     }
 }
