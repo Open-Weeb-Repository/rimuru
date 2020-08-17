@@ -46,20 +46,20 @@ export default {
                 }
             }
         } while (collectionCount > now);
-        // todo: this is stupid, time to change from monk to mongodb driver or other
-        await Promise.all(
-            inactiveJobIds.map(
-                _id => projectJobs.update(
-                    {
-                        _id
-                    },
-                    {
-                        $set: {
-                            state: "inactive"
-                        }
-                    }
-                )
-            )
+
+        await projectJobs.update(
+            {
+                _id: {
+                    $in: inactiveJobIds
+                }
+            },
+            {
+                $set: {
+                    state: "inactive"
+                }
+            }, {
+                multi: true
+            }
         )
 
         return {
