@@ -11,16 +11,14 @@ export class App {
     }
 
     async start(){
-        const activeJobs = await projectJobsRepo.getActiveJobs();
-        log('%d active job found in database', activeJobs.length);
-        const task: Promise<any>[] = [];
-        for (const activeJob of activeJobs) {
+        log("Start sending job in batch");
+        const result = await projectJobsRepo.walkInActiveJob(async activeJob => {
             if ( activeJob.n_done === 0 && activeJob.n_fail > config.get('projectNeverThreshold') ) {
                 // project not taken by provider
-                task.push(projectJobsRepo.setJobToInactive(activeJob));
+                return false;
             } else if (activeJob.n_done > 0 && activeJob.n_fail > config.get('projectInactiveThreshold')) {
                 // project no longer active
-                task.push(projectJobsRepo.setJobToInactive(activeJob));
+                return false;
             } else {
                 // send job to worker
                 const _id = activeJob._id.toString();
@@ -31,10 +29,9 @@ export class App {
                     provider: activeJob.provider,
                     searchParam: activeJob.searchParam
                 })
+                return true;
             }
-        }
-        if (task.length > 0) {
-            await Promise.all(task);
-        }
+        });
+        log("Done with: %o", result);
     }
 }
